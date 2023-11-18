@@ -16,11 +16,14 @@
     
     
       
-        <title>Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway</title>
+        <title>FortiGate AWS-FGCP-A/P-TGW LAB</title>
       
     
     
       <link rel="stylesheet" href="assets/stylesheets/main.78cf6014.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -49,7 +52,14 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-purple">
   
     
     
@@ -61,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-mkdocs" class="md-skip">
+        <a href="#welcome-to-the-fortinet-fgcp-active-passive-ha-in-aws-lab-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -77,7 +87,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway" class="md-header__button md-logo" aria-label="Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway" data-md-component="logo">
+    <a href="." title="FortiGate AWS-FGCP-A/P-TGW LAB" class="md-header__button md-logo" aria-label="FortiGate AWS-FGCP-A/P-TGW LAB" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -91,18 +101,44 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway
+            FortiGate AWS-FGCP-A/P-TGW LAB
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to MkDocs
+              Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide
             
           </span>
         </div>
       </div>
     </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
     
     
     
@@ -169,13 +205,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway" class="md-nav__button md-logo" aria-label="Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway" data-md-component="logo">
+    <a href="." title="FortiGate AWS-FGCP-A/P-TGW LAB" class="md-nav__button md-logo" aria-label="FortiGate AWS-FGCP-A/P-TGW LAB" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Lab - FortiGate FGCP Active/Passive HA with AWS Transit Gateway
+    FortiGate AWS-FGCP-A/P-TGW LAB
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -199,7 +235,7 @@
           
   
   <span class="md-ellipsis">
-    Welcome to MkDocs
+    Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide
   </span>
   
 
@@ -210,7 +246,7 @@
         
   
   <span class="md-ellipsis">
-    Welcome to MkDocs
+    Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide
   </span>
   
 
@@ -232,18 +268,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#lab-component" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project layout
+      Lab Component
     </span>
   </a>
   
@@ -284,18 +311,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#commands" class="md-nav__link">
+  <a href="#lab-component" class="md-nav__link">
     <span class="md-ellipsis">
-      Commands
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project layout
+      Lab Component
     </span>
   </a>
   
@@ -316,17 +334,38 @@
                   
 
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="welcome-to-the-fortinet-fgcp-active-passive-ha-in-aws-lab-guide">Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide</h1>
+<p>This is an interactive lab aimed at learning how to deploy and do post deployment basic configuration.
+The lab will provide some exercises that are challenges and not step-by-step sequences. Ideally work together and solve the challenges. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This lab guide does not provide solutions. Only challenges with hints and tips and is designed to be used in an interactive session.</p>
+</div>
+<p>This guide assumes basic Linux skills and competency with command line editors.</p>
+<p>There are 2 modes to deploy the lab.</p>
+<ol>
+<li>
+<p>With a Jumphost with all the tools necessary for deployment and access to the resources</p>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>The Jumphost</li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
+</li>
+<li>
+<p>Without a Jumphost and directly deploying the environment and then working through the exercises from anywhere. </p>
+<ul>
+<li><a href="https://github.com/ukilab-cloud/aws-jumpbox">AWS Jumphost Template</a></li>
+<li><a href="https://github.com/ukilab-cloud/lab-tgw-fgcp">AWS Lab Environment</a></li>
+</ul>
+</li>
+</ol>
+<p>This is an example of </p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="highlight"><pre><span></span><code>diag sniffer packet any &#39;tcp and host&#39; 4 0 1
+</code></pre></div>
+</div>
+<h2 id="lab-component">Lab Component</h2>
+<pre><code>[AWS Jumphost Template](https://github.com/ukilab-cloud/aws-jumpbox)    # The configuration file.
 docs/
     index.md  # The documentation homepage.
     ...       # Other markdown pages, images and other files.
@@ -369,7 +408,7 @@ docs/
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="assets/javascripts/bundle.6c14ae12.min.js"></script>
