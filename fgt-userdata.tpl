@@ -85,30 +85,6 @@ set device port2
 set dstaddr "RFC1918 Addresses"
 set gateway ${private_gw}
 end
-config firewall policy
-edit 1
-set name East-West
-set srcintf port2
-set dstintf port2
-set srcaddr Spokes
-set dstaddr Spokes
-set action accept
-set schedule always
-set service ALL
-set logtraffic all
-next
-edit 2
-set name Egress
-set srcintf port2
-set dstintf port1
-set srcaddr Spokes
-set dstaddr all
-set action accept
-set schedule always
-set service ALL
-set logtraffic all
-set nat enable
-end
 config system ha
 set group-name fortinet
 set group-id 1
