@@ -5,8 +5,7 @@ Primarily for use in lab environments. Use at your own risk.
 
 # Purpose
 
-This environment is designed as basis for the [Fortinet FGCP Active/Passive HA Lab](https://github.com/ukilab-cloud/lab-tgw-fgcp) which is documented [here](https://ukilab-cloud.github.io/lab-tgw-fgcp/)
-
+This environment is used by [Fortinet FGCP Active/Passive HA Lab](https://ukilab-cloud.github.io/lab-tgw-fgcp/)
 
 ## Requirements
 - [Terraform](https://learn.hashicorp.com/terraform/getting-started/install.html) >= 1.6.0
