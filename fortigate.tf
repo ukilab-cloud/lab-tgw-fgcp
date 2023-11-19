@@ -48,7 +48,6 @@ resource "aws_vpc_endpoint" "endpoint" {
   }
 }
 
-
 ### Determine FG AMI baed on variables and data query
 
 locals{
@@ -254,50 +253,50 @@ resource "aws_route_table" "fortinet_transit_rt" {
   }
 }
 
-### FortiGate A - Userdata - Template Variable
+### Userdata - Locals - the template is already in the form of a multipart MIME
 
-data "template_file" "userdata_fgta" {
-  template = "${file("${path.module}/fgt-userdata.tpl")}"
-  vars = {
-    fgt_id               = "FGT-A"
-    type                 = "${var.fos_license_type}"
-    license_file         = "${var.license}"
-    fgt_public_ip        = join("/", [element(tolist(aws_network_interface.fgta-public-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_public_a_subnet_cidr}")])
-    fgt_private_ip       = join("/", [element(tolist(aws_network_interface.fgta-private-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_private_a_subnet_cidr}")])
-    fgt_hasync_ip        = join("/", [element(tolist(aws_network_interface.fgta-hasync-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_hasync_a_subnet_cidr}")])
-    fgt_mgmt_ip          = join("/", [element(tolist(aws_network_interface.fgta-mgmt-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_mgmt_a_subnet_cidr}")])
-    public_gw            = cidrhost(var.fortinet_vpc_public_a_subnet_cidr, 1)
-    private_gw           = cidrhost(var.fortinet_vpc_private_a_subnet_cidr, 1)
-    spoke1_cidr          = var.spoke_vpc_a_cidr
-    spoke2_cidr          = var.spoke_vpc_b_cidr
-    password             = var.password
-    mgmt_gw              = cidrhost(var.fortinet_vpc_mgmt_a_subnet_cidr, 1)
-    fgt_priority         = "255"
-    fgt-remote-hasync    = element(tolist(aws_network_interface.fgtb-hasync-b-eni.private_ips), 0)
-  }
-}
 
-### FortiGate B - Userdata - Template Variables
-
-data "template_file" "userdata_fgtb" {
-  template = "${file("${path.module}/fgt-userdata.tpl")}"
-  vars = {
-    fgt_id               = "FGT-B"
-    type                 = "${var.fos_license_type}"
-    license_file         = "${var.license}"
-    fgt_public_ip        = join("/", [element(tolist(aws_network_interface.fgtb-public-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_public_b_subnet_cidr}")])
-    fgt_private_ip       = join("/", [element(tolist(aws_network_interface.fgtb-private-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_private_b_subnet_cidr}")])
-    fgt_hasync_ip        = join("/", [element(tolist(aws_network_interface.fgtb-hasync-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_hasync_b_subnet_cidr}")])
-    fgt_mgmt_ip          = join("/", [element(tolist(aws_network_interface.fgtb-mgmt-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_mgmt_b_subnet_cidr}")])
-    public_gw            = cidrhost(var.fortinet_vpc_public_b_subnet_cidr, 1)
-    private_gw           = cidrhost(var.fortinet_vpc_private_b_subnet_cidr, 1)
-    spoke1_cidr          = var.spoke_vpc_a_cidr
-    spoke2_cidr          = var.spoke_vpc_b_cidr
-    password             = var.password
-    mgmt_gw              = cidrhost(var.fortinet_vpc_mgmt_b_subnet_cidr, 1)
-    fgt_priority         = "100"
-    fgt-remote-hasync    = element(tolist(aws_network_interface.fgta-hasync-a-eni.private_ips), 0)
-  }
+locals {
+  userdata_fgta = templatefile(
+    "${path.module}/fgt-userdata.tftpl",
+    {
+      fgt_id               = "FGT-A"
+      type                 = "${var.fos_license_type}"
+      license_file         = "${var.license}"
+      fgt_public_ip        = join("/", [element(tolist(aws_network_interface.fgta-public-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_public_a_subnet_cidr}")])
+      fgt_private_ip       = join("/", [element(tolist(aws_network_interface.fgta-private-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_private_a_subnet_cidr}")])
+      fgt_hasync_ip        = join("/", [element(tolist(aws_network_interface.fgta-hasync-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_hasync_a_subnet_cidr}")])
+      fgt_mgmt_ip          = join("/", [element(tolist(aws_network_interface.fgta-mgmt-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_mgmt_a_subnet_cidr}")])
+      public_gw            = cidrhost(var.fortinet_vpc_public_a_subnet_cidr, 1)
+      private_gw           = cidrhost(var.fortinet_vpc_private_a_subnet_cidr, 1)
+      spoke1_cidr          = var.spoke_vpc_a_cidr
+      spoke2_cidr          = var.spoke_vpc_b_cidr
+      password             = var.password
+      mgmt_gw              = cidrhost(var.fortinet_vpc_mgmt_a_subnet_cidr, 1)
+      fgt_priority         = "255"
+      fgt-remote-hasync    = element(tolist(aws_network_interface.fgtb-hasync-b-eni.private_ips), 0)
+    }
+  )
+  userdata_fgtb = templatefile(
+    "${path.module}/fgt-userdata.tftpl",
+    {
+      fgt_id               = "FGT-B"
+      type                 = "${var.fos_license_type}"
+      license_file         = "${var.license}"
+      fgt_public_ip        = join("/", [element(tolist(aws_network_interface.fgtb-public-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_public_b_subnet_cidr}")])
+      fgt_private_ip       = join("/", [element(tolist(aws_network_interface.fgtb-private-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_private_b_subnet_cidr}")])
+      fgt_hasync_ip        = join("/", [element(tolist(aws_network_interface.fgtb-hasync-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_hasync_b_subnet_cidr}")])
+      fgt_mgmt_ip          = join("/", [element(tolist(aws_network_interface.fgtb-mgmt-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_mgmt_b_subnet_cidr}")])
+      public_gw            = cidrhost(var.fortinet_vpc_public_b_subnet_cidr, 1)
+      private_gw           = cidrhost(var.fortinet_vpc_private_b_subnet_cidr, 1)
+      spoke1_cidr          = var.spoke_vpc_a_cidr
+      spoke2_cidr          = var.spoke_vpc_b_cidr
+      password             = var.password
+      mgmt_gw              = cidrhost(var.fortinet_vpc_mgmt_b_subnet_cidr, 1)
+      fgt_priority         = "100"
+      fgt-remote-hasync    = element(tolist(aws_network_interface.fgta-hasync-a-eni.private_ips), 0)
+    }
+  )
 }
 
 ### Create the fgta instance
@@ -308,7 +307,7 @@ resource "aws_instance" "fgta" {
   availability_zone = var.availability_zone1
   key_name          = var.keypair
   iam_instance_profile = aws_iam_instance_profile.fortigate_profile.name
-  user_data         = "${data.template_file.userdata_fgta.rendered}"
+  user_data         = local.userdata_fgta
   network_interface {
     device_index         = 0
     network_interface_id = aws_network_interface.fgta-public-a-eni.id
@@ -338,7 +337,7 @@ resource "aws_instance" "fgtb" {
   availability_zone = var.availability_zone2
   key_name          = var.keypair
   iam_instance_profile = aws_iam_instance_profile.fortigate_profile.name
-  user_data         = "${data.template_file.userdata_fgtb.rendered}" 
+  user_data         = local.userdata_fgtb
   network_interface {
     device_index         = 0
     network_interface_id = aws_network_interface.fgtb-public-b-eni.id
