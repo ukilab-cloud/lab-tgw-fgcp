@@ -25,3 +25,19 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+nav:
+  - 'index.md'
+  - 'environment.md'
+  - 'deployment.md'
+  - 'exercise-1.md'
+  - 'exercise-1.md'
+  - 'exercise-1.md'
+  - 'exercise-1.md'
+  - 'exercise-1.md'
+  - 'exercise-1.md'
+plugins:
+  - glightbox:
+      effect: zoom
+      height: auto
+      width: 100%
+      zoomable: true

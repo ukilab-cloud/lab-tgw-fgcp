@@ -7,7 +7,7 @@ The lab will provide some exercises that are challenges and not step-by-step seq
 
     This lab guide does not provide solutions. Only challenges with hints and tips and is designed to be used in an interactive session.
 
-This guide assumes basic Linux skills and competency with command line editors.
+This guide assumes basic Linux skills and competency with command line editors. Neovim (nvim) and Micro are included as well as Vi
 
 There are 2 modes to deploy the lab.
 
@@ -17,22 +17,13 @@ There are 2 modes to deploy the lab.
 
 2.  Without a Jumphost and directly deploying the environment and then working through the exercises from anywhere. 
 
+The assumption is that this lab will be deployed by the Jumphost. The Jumphost has already been deployed for you, however if it you are doing this lab unattended then please deploy the following template [AWS Jumphost Template](https://github.com/ukilab-cloud/aws-jumpbox) if you intend to use the exact environment.
 
- 
-    - [AWS Jumphost Template](https://github.com/ukilab-cloud/aws-jumpbox)
-    - [AWS Lab Environment](https://github.com/ukilab-cloud/lab-tgw-fgcp)
+**No changes are required in AWS all exercises are preformed on the FortiGate, Ubuntu hosts and Jumpbox exclusively.**
 
+Once you are ready proceed to [Environment Overview](environment.md)
 
-This is an example of 
-!!! Tip
+!!! note
 
-    ```
-    diag sniffer packet any 'tcp and host' 4 0 1
-    ```
+    Only internet access, a browser and an SSH client will be required for this lab.
 
-## Lab Component
-
-    [AWS Jumphost Template](https://github.com/ukilab-cloud/aws-jumpbox)    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.

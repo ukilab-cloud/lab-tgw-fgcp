@@ -37,8 +37,8 @@ This environment is used by [Fortinet FGCP Active/Passive HA Lab](https://ukilab
 
 ## Deployment
 - Clone the repository.
+- Copy `terraform.tfvars.example`  to `terraform.tfvars`
 - If not using Jumpbox
-  - Copy `terraform.tfvars.example`  to `terraform.tfvars`
   - Change ACCESS_KEY and SECRET_KEY values in terraform.tfvars 
 * Initialize the providers and modules:
   ```sh
