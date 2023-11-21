@@ -8,8 +8,8 @@
  ```
 - Prepare for deployment
 ``` sh
-cd lab-tgw-fgcp`
-cp terraform.tfvars.example terraform.tfvars`
+cd lab-tgw-fgcp
+cp terraform.tfvars.example terraform.tfvars
 ```
 - Initialise terraform
 ```sh

@@ -1,3 +1,8 @@
+Title:      Guidance (Start Here)
+Summary:    A brief welcome document
+Authors:    D. Fligel
+date:       2023-11-12
+
 # Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide
 
 This is an interactive lab aimed at learning how to deploy and do post deployment basic configuration.

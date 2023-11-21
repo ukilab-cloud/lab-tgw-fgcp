@@ -1,8 +1,10 @@
-site_name: FortiGate AWS-FGCP-A/P-TGW LAB
+site_name: Fortinet AWS-FGCP-AP-TGW LAB
+repo_url: https://github.com/ukilab-cloud/lab-tgw-fgcp/
 theme:
   name: material
   features:
-    - content.code.copy 
+    - content.code.copy
+    - content.code.select  
   palette: 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -30,6 +32,10 @@ nav:
   - 'environment.md'
   - 'deployment.md'
   - 'exercise-1.md'
+  - 'exercise-2.md'
+  - 'exercise-3.md'
+  - 'exercise-4.md'
+  - 'exercise-5.md'
 plugins:
   - glightbox:
       effect: zoom
