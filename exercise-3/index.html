@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../exercise-2/">
       
-        <link rel="next" href="environment/">
+      
+        <link rel="next" href="../exercise-4/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
     
     
       
-        <title>Guidance (Start Here) - Fortinet AWS-FGCP-AP-TGW LAB</title>
+        <title>Exercise 3 - Egress - Fortinet AWS-FGCP-AP-TGW LAB</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -44,14 +46,14 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -62,7 +64,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -84,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-the-fortinet-fgcp-active-passive-ha-in-aws-lab-guide" class="md-skip">
+        <a href="#exercise-3-egress" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +102,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Fortinet AWS-FGCP-AP-TGW LAB" class="md-header__button md-logo" aria-label="Fortinet AWS-FGCP-AP-TGW LAB" data-md-component="logo">
+    <a href=".." title="Fortinet AWS-FGCP-AP-TGW LAB" class="md-header__button md-logo" aria-label="Fortinet AWS-FGCP-AP-TGW LAB" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -120,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Guidance (Start Here)
+              Exercise 3 - Egress
             
           </span>
         </div>
@@ -193,7 +195,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Fortinet AWS-FGCP-AP-TGW LAB" class="md-nav__button md-logo" aria-label="Fortinet AWS-FGCP-AP-TGW LAB" data-md-component="logo">
+    <a href=".." title="Fortinet AWS-FGCP-AP-TGW LAB" class="md-nav__button md-logo" aria-label="Fortinet AWS-FGCP-AP-TGW LAB" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -220,18 +222,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -240,7 +233,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -251,7 +243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="environment/" class="md-nav__link">
+      <a href="../environment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -270,7 +262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deployment/" class="md-nav__link">
+      <a href="../deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -289,7 +281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise-1/" class="md-nav__link">
+      <a href="../exercise-1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -308,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise-2/" class="md-nav__link">
+      <a href="../exercise-2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -325,9 +317,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="exercise-3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise 3 - Egress
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -336,6 +348,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#egress-traffic-to-the-internet-from-the-spoke-vpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Egress traffic to the Internet from the Spoke VPCs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -346,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise-4/" class="md-nav__link">
+      <a href="../exercise-4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -365,7 +406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="exercise-5/" class="md-nav__link">
+      <a href="../exercise-5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -398,6 +439,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#egress-traffic-to-the-internet-from-the-spoke-vpcs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Egress traffic to the Internet from the Spoke VPCs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -414,32 +472,24 @@
   
 
 
-<h1 id="welcome-to-the-fortinet-fgcp-active-passive-ha-in-aws-lab-guide">Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide</h1>
-<p>This is an interactive lab aimed at learning how to deploy and do post deployment basic configuration.
-The lab will provide some exercises that are challenges and not step-by-step sequences. Ideally work together and solve the challenges. </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This lab guide does not provide solutions. Only challenges with hints and tips and is designed to be used in an interactive session.</p>
-</div>
-<p>This guide assumes basic Linux skills and competency with command line editors. Neovim (nvim) and Micro are included as well as Vi</p>
-<p>There are 2 modes to deploy the lab.</p>
+<h1 id="exercise-3-egress">Exercise 3 - Egress</h1>
+<h3 id="egress-traffic-to-the-internet-from-the-spoke-vpcs">Egress traffic to the Internet from the Spoke VPCs</h3>
+<div class="admonition success">
+<p class="admonition-title">Success Requirement</p>
 <ol>
-<li>
-<p>With a Jumphost with all the tools necessary for deployment and access to the resources</p>
-<ul>
-<li>The Jumphost</li>
-</ul>
-</li>
-<li>
-<p>Without a Jumphost and directly deploying the environment and then working through the exercises from anywhere. </p>
-</li>
+<li>From Workload A - ping/curl/wget public services.</li>
+<li><code>ping 8.8.8.8</code> or <code>ping 1.1.1.1</code></li>
+<li><code>curl ipinfo.io</code> what IP do you see? </li>
+<li><code>ss -nat</code> on Workload A and confirm the source is the original source IP.</li>
 </ol>
-<p>The assumption is that this lab will be deployed by the Jumphost. The Jumphost has already been deployed for you, however if it you are doing this lab unattended then please deploy the following template <a href="https://github.com/ukilab-cloud/aws-jumpbox">AWS Jumphost Template</a> if you intend to use the exact environment.</p>
-<p><strong>No changes are required in AWS all exercises are preformed on the FortiGate, Ubuntu hosts and Jumpbox exclusively.</strong></p>
-<p>Once you are ready proceed to <a href="environment/">Environment Overview</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Only internet access, a browser and an SSH client will be required for this lab.</p>
+</div>
+<p><a class="glightbox" href="../images/egress.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Egress" src="../images/egress.png" title="Egress" /></a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>FortiGate offers powerful diagnostic tools. Try some of the following when connecting<br />
+<code>diag sniffer packet any ‘icmp’ 4 0 1</code> <br />
+<code>diag sniffer packet any ‘tcp and port 443’ 4 0 1</code> <br />
+<code>diag sniffer packet any ‘host 1.1.1.1’ 4 0 1</code> - if you want to focus on a specific destination for a ping for example</p>
 </div>
 
 
@@ -479,10 +529,10 @@ The lab will provide some exercises that are challenges and not step-by-step seq
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "content.code.select"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.6c14ae12.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
