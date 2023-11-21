@@ -30,11 +30,6 @@ nav:
   - 'environment.md'
   - 'deployment.md'
   - 'exercise-1.md'
-  - 'exercise-1.md'
-  - 'exercise-1.md'
-  - 'exercise-1.md'
-  - 'exercise-1.md'
-  - 'exercise-1.md'
 plugins:
   - glightbox:
       effect: zoom
