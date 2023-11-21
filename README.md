@@ -1,4 +1,4 @@
-# AWS Fortinet FGCP Active/PAssive HA Lab
+# AWS Fortinet FGCP Active/Passive HA Lab
 A lab environment for learning/configuring flows through FortiGates deployed in the Active/Passive TGW Architecture. This is a common reference architecture and the lab serves as practice area to familiarise yourself with all the components.
 
 Primarily for use in lab environments. Use at your own risk.
@@ -21,7 +21,7 @@ This environment is used by [Fortinet FGCP Active/Passive HA Lab](https://ukilab
  - 1x FortiGate VPC (Public)
         - IGW
  - 2x FortiGate
-        - 4x NIC each (recom,m)
+        - 4x NIC each (recommended)
  - 2x EIP for FortiGate Management Interfaces
  - 1x EIP for FortiGate Cluster
  - 2x Spoke VPC (Private)
