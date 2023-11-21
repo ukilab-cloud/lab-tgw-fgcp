@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Exercise 2 - Ingress (No SNAT)
 
 ### Ingress Traffic flow from Jumpbox to WorkloadA (no SNAT)

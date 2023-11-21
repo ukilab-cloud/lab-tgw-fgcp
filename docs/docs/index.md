@@ -1,7 +1,8 @@
-Title:      Guidance (Start Here)
-Summary:    A brief welcome document
-Authors:    D. Fligel
-date:       2023-11-12
+---
+title: Guidance (Start Here)
+hide:
+  - toc
+---
 
 # Welcome to the Fortinet FGCP Active-Passive HA in AWS Lab Guide
 

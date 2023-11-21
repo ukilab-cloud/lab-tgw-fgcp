@@ -1,4 +1,8 @@
-# Exercise 4 - High Availability
+---
+hide:
+  - toc
+---
+# Exercise 5 - High Availability
 
 ### Egress traffic to the Internet from the Spoke VPCs
 

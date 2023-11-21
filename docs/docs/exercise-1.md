@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Exercise 1 - Ingress with SNAT
 
 ### Ingress Traffic flow from Jumpbox to WorkloadA with SNAT enabled on the policy

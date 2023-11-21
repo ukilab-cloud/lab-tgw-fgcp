@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Exercise 4 - East-West
 
 ### Egress traffic to the Internet from the Spoke VPCs

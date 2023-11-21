@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 # Exercise 3 - Egress
 
 ### Egress traffic to the Internet from the Spoke VPCs

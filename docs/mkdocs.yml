@@ -4,7 +4,8 @@ theme:
   name: material
   features:
     - content.code.copy
-    - content.code.select  
+    - content.code.select
+    - search.highlight  
   palette: 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -42,3 +43,4 @@ plugins:
       height: auto
       width: 100%
       zoomable: true
+  - search
