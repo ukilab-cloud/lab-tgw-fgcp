@@ -9,21 +9,23 @@
       
       
       
+        <link rel="prev" href="./">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
     
     
       
-        <title>FortiGate AWS-FGCP-A/P-TGW LAB</title>
+        <title>Exercise 1 - Ingress with SNAT - FortiGate AWS-FGCP-A/P-TGW LAB</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -42,14 +44,25 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -70,6 +83,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#exercise-1-ingress-with-snat" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -82,7 +100,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="FortiGate AWS-FGCP-A/P-TGW LAB" class="md-header__button md-logo" aria-label="FortiGate AWS-FGCP-A/P-TGW LAB" data-md-component="logo">
+    <a href=".." title="FortiGate AWS-FGCP-A/P-TGW LAB" class="md-header__button md-logo" aria-label="FortiGate AWS-FGCP-A/P-TGW LAB" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -102,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Exercise 1 - Ingress with SNAT
             
           </span>
         </div>
@@ -163,7 +181,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="FortiGate AWS-FGCP-A/P-TGW LAB" class="md-nav__button md-logo" aria-label="FortiGate AWS-FGCP-A/P-TGW LAB" data-md-component="logo">
+    <a href=".." title="FortiGate AWS-FGCP-A/P-TGW LAB" class="md-nav__button md-logo" aria-label="FortiGate AWS-FGCP-A/P-TGW LAB" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -180,7 +198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -199,7 +217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/environment/" class="md-nav__link">
+      <a href="../environment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -218,7 +236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/deployment/" class="md-nav__link">
+      <a href="../deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -237,7 +255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/exercise-1/" class="md-nav__link">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -256,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/exercise-1/" class="md-nav__link">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -275,7 +293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/exercise-1/" class="md-nav__link">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -294,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/exercise-1/" class="md-nav__link">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -313,7 +331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/exercise-1/" class="md-nav__link">
+      <a href="./" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -330,9 +348,29 @@
       
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/exercise-1/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Exercise 1 - Ingress with SNAT
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -341,6 +379,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-traffic-flow-from-jumpbox-to-workloada-with-snat-enabled-on-the-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Traffic flow from Jumpbox to WorkloadA with SNAT enabled on the policy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -362,6 +429,25 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-traffic-flow-from-jumpbox-to-workloada-with-snat-enabled-on-the-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Traffic flow from Jumpbox to WorkloadA with SNAT enabled on the policy
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -373,8 +459,40 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+<h1 id="exercise-1-ingress-with-snat">Exercise 1 - Ingress with SNAT</h1>
+<h3 id="ingress-traffic-flow-from-jumpbox-to-workloada-with-snat-enabled-on-the-policy">Ingress Traffic flow from Jumpbox to WorkloadA with SNAT enabled on the policy</h3>
+<div class="admonition success">
+<p class="admonition-title">Success Requirement</p>
+<ol>
+<li>SSH to Workload A using <code>ssh -i sshkey-aplab-ssh-priv.pem ubuntu@</code> whatever the IP/Port you are using</li>
+<li><code>ss -nat</code> on Workload A and confirm the source is the FortiGate</li>
+</ol>
+</div>
+<p><a class="glightbox" href="../images/ingress.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Ingress with SNAT" src="../images/ingress.png" title="Ingress with SNAT" /></a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Either use port translation or change the FortiGate SSH listening listening address on Port1</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Multiple failed login attempts to the FortiGate SSH CLI will result in a 5+ minute lockout. Any failed login should be carefully considered before attempting again.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>FortiGate offers powerful diagnostic tools. Try some of the following when connecting
+<code>diag sniffer packet any ‘tcp and port 22’ 4 0 1</code> 
+<code>Use diag sniffer packet any ‘tcp and port 2222’ 4 0 1</code> - if using a tcp port translation
+<code>Use diag sniffer packet any ‘host &lt;ip&gt;’ 4 0 1</code> - if you want to focus on a specific IP</p>
+</div>
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -407,11 +525,11 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["content.code.copy"], "search": "/assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.6c14ae12.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
