@@ -33,6 +33,16 @@ output "TransitGwy_ID" {
 }
 
 output "fortigate_image_id" {
-    value = data.aws_ami.fortigate_ami.id
-    description = "Fortigate AMI Image ID"
+  value       = data.aws_ami.fortigate_ami.id
+  description = "Fortigate AMI Image ID"
+}
+
+output "SSH_to_FGT_A" {
+  value       = "ssh -i ${local_sensitive_file.sshprivkey.filename} admin@${aws_eip.eip-mgmt1.public_ip}"
+  description = "string to SSH to FGT_A"
+}
+
+output "SSH_to_FGT_B" {
+  value       = "ssh -i ${local_sensitive_file.sshprivkey.filename} admin@${aws_eip.eip-mgmt2.public_ip}"
+  description = "string to SSH to FGT_B"
 }
