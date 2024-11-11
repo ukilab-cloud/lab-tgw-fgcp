@@ -30,7 +30,19 @@ variable "availability_zone2" {
   description = "Provide the second availability zone to create the subnets in"
   default     = "eu-west-2b"
 }
+### Ubuntu Version
 
+variable "ubumajor" {
+  description = "Ubuntu Version - Using the AMI Description"
+  type        = string
+  default     = "ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server"
+}
+
+variable "ubudate" {
+  description = "Ubuntu Version - Date"
+  type        = string
+  default     = "20240927"
+}
 ### Key Pair Name 
 
 variable "keypair" {
@@ -41,26 +53,26 @@ variable "keypair" {
 ### FortiGate Variables
 variable "license" {
   description = "Input license file name for fgta if using byol license type"
-  type    = string
-  default = "license.txt"
+  type        = string
+  default     = "license.txt"
 }
 
 // license file for the passive fgt
 variable "license2" {
   description = "Input license file name for fgtb if using byol license type"
-  type    = string
-  default = "license2.txt"
+  type        = string
+  default     = "license2.txt"
 }
 
 //Fortigate AWS AMI Variables
-variable "fos_version" { 
-    default = "7.4.1" 
-    type = string
-} 
+variable "fos_version" {
+  default = "7.4.5"
+  type    = string
+}
 
 variable "fos_architecture" {
-    default = "x86_64"
-    # x86_64 or ARM are valid entries
+  default = "x86_64"
+  # x86_64 or ARM are valid entries
 }
 
 // Provide the license type for FortiGate-VM Instances, either byol or payg.
@@ -74,7 +86,7 @@ variable "fos_license_type" {
 // For detail, refer to https://aws.amazon.com/ec2/instance-types/
 variable "instance_type" {
   description = "Provide the instance type for the FortiGate instances"
-  default = "c5n.xlarge"
+  default     = "c6in.xlarge"
 }
 
 variable "scenario" {
