@@ -2,9 +2,10 @@
 ### All variables are defined here ###
 ######################################
 
-###  Access and secret keys to your environment
-variable "access_key" {}
-variable "secret_key" {}
+###  Access and secret keys to your environment - Uncomment if using tfvars and not using AWS CLI
+###  for authentication
+# variable "access_key" {}
+# variable "secret_key" {}
 
 # Uncomment if using AWS SSO:
 # variable "token"      {}
