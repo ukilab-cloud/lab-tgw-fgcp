@@ -52,17 +52,45 @@ variable "keypair" {
 }
 
 ### FortiGate Variables
-variable "license" {
-  description = "Input license file name for fgta if using byol license type"
+
+# Licensing is either "payg" or "byol" - see variable "fos_license_type"
+# If using BYOL either use licenses (.lic) files or flex tokens but not both
+# If using PAYG (default for the template) all license/tokebn defaults must be ""
+# 
+// license file for the fgtA - Mutually exclusive with flex
+# Place license file in terraform root
+variable "format" {
+  description = "If BYOL specify either token or file"
   type        = string
-  default     = "license.txt"
+  default     = "file"
 }
 
-// license file for the passive fgt
-variable "license2" {
-  description = "Input license file name for fgtb if using byol license type"
+variable "license" {
+  description = "lic file eg. lic1.txt - BYOL ONLY"
   type        = string
-  default     = "license2.txt"
+  default     = ""
+}
+
+// license file for the fgtB - Mutually exclusive with flex 
+# Place license file in terraform root
+variable "license2" {
+  description = "lic file eg. lic2.txt - BYOL ONLY"
+  type        = string
+  default     = ""
+}
+
+// flex token  for the fgtA - Mutually exclusive with "license"
+variable "flex_token" {
+  description = "Insert flex token - DO NOT USE WITH PAYG"
+  type        = string
+  default     = ""
+}
+
+// flex token  for the fgtB - Mutually exclusive with "license"
+variable "flex_token2" {
+  description = "Insert flex token - DO NOT USE WITH PAYG"
+  type        = string
+  default     = ""
 }
 
 //Fortigate AWS AMI Variables
@@ -77,6 +105,7 @@ variable "fos_architecture" {
 }
 
 // Provide the license type for FortiGate-VM Instances, either byol or payg.
+// Use byol for flex
 variable "fos_license_type" {
   default = "payg"
 }

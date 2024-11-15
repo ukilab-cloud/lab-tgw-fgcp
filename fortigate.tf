@@ -255,7 +255,6 @@ resource "aws_route_table" "fortinet_transit_rt" {
 
 ### Userdata - Locals - the template is already in the form of a multipart MIME
 
-
 locals {
   userdata_fgta = templatefile(
     "${path.module}/fgt-userdata.tftpl",
@@ -263,6 +262,8 @@ locals {
       fgt_id            = "FGT-A"
       type              = "${var.fos_license_type}"
       license_file      = "${var.license}"
+      flex_token        = "${var.flex_token}"
+      format            = "${var.format}"
       fgt_public_ip     = join("/", [element(tolist(aws_network_interface.fgta-public-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_public_a_subnet_cidr}")])
       fgt_private_ip    = join("/", [element(tolist(aws_network_interface.fgta-private-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_private_a_subnet_cidr}")])
       fgt_hasync_ip     = join("/", [element(tolist(aws_network_interface.fgta-hasync-a-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_hasync_a_subnet_cidr}")])
@@ -282,7 +283,9 @@ locals {
     {
       fgt_id            = "FGT-B"
       type              = "${var.fos_license_type}"
-      license_file      = "${var.license}"
+      license_file      = "${var.license2}"
+      flex_token        = "${var.flex_token2}"
+      format            = "${var.format}"
       fgt_public_ip     = join("/", [element(tolist(aws_network_interface.fgtb-public-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_public_b_subnet_cidr}")])
       fgt_private_ip    = join("/", [element(tolist(aws_network_interface.fgtb-private-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_private_b_subnet_cidr}")])
       fgt_hasync_ip     = join("/", [element(tolist(aws_network_interface.fgtb-hasync-b-eni.private_ips), 0), cidrnetmask("${var.fortinet_vpc_hasync_b_subnet_cidr}")])

@@ -4,6 +4,8 @@ MIME-Version: 1.0
 --==AWS==
 Content-Type: text/x-shellscript; charset="us-ascii"
 MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename="config"
 
 config system global
 set hostname ${fgt_id}
@@ -120,7 +122,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
 Content-Disposition: attachment; filename="license"
 
-${file(license_file)}
+%{ if format == "file" } ${file(license_file)} %{ endif }
+%{ if format == "token" } LICENSE-TOKEN:${flex_token} %{ endif }
 
 %{ endif }
---==AWS==--
+ 
+--==AWS==
