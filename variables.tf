@@ -95,7 +95,7 @@ variable "flex_token2" {
 
 //Fortigate AWS AMI Variables
 variable "fos_version" {
-  default = "7.4.5"
+  default = "7.6.2"
   type    = string
 }
 
@@ -255,4 +255,9 @@ variable "spoke_vpc_b_transit_b_subnet_cidr" {
 variable "cidr_for_access" {
   description = "Provide a network CIDR for accessing the FortiGate instances"
   default     = "0.0.0.0/0"
+}
+
+variable "cidr_for_mgmt_access" {
+  description = "Provide a network CIDR for accessing the FortiGate instances,don't forget the /32"
+  default     = "194.168.211.150/32"
 }

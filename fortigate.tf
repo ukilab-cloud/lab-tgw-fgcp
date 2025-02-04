@@ -4,8 +4,8 @@
 
 ### Security Groups
 
-resource "aws_security_group" "NSG-vpc-fortinet-ssh-icmp-https" {
-  name        = "NSG-vpc-fortinet-ssh-icmp-https"
+resource "aws_security_group" "NSG-vpc-fortinet-allow-all" {
+  name        = "NSG-vpc-fortinet-allow-all"
   description = "Allow SSH, HTTPS and ICMP traffic"
   vpc_id      = aws_vpc.vpc_fortinet.id
 
@@ -25,11 +25,36 @@ resource "aws_security_group" "NSG-vpc-fortinet-ssh-icmp-https" {
   }
 
   tags = {
-    Name     = "${var.tag_name_prefix}-vpc-fortinet-ssh-icmp-https"
+    Name     = "${var.tag_name_prefix}-vpc-fortinet-allow-all"
     scenario = var.scenario
   }
 }
 
+resource "aws_security_group" "NSG-vpc-fortinet-mgmt-allow-all" {
+  name        = "NSG-vpc-fortinet-mgmt-allow-all"
+  description = "Allow all traffic from approved addresses"
+  vpc_id      = aws_vpc.vpc_fortinet.id
+
+  ingress {
+    description = "Allow remote access to FGT"
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["${var.cidr_for_mgmt_access}"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name     = "${var.tag_name_prefix}-vpc-fortinet-mgmt-allow-all"
+    scenario = var.scenario
+  }
+}
 ### VPC Endpoint for HA
 
 resource "aws_vpc_endpoint" "endpoint" {
@@ -37,9 +62,7 @@ resource "aws_vpc_endpoint" "endpoint" {
   service_name      = "com.amazonaws.${var.region}.ec2"
   vpc_endpoint_type = "Interface"
 
-  security_group_ids = [
-    aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id,
-  ]
+  security_group_ids = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
 
   private_dns_enabled = true
   subnet_ids          = [aws_subnet.mgmt_a_subnet.id, aws_subnet.mgmt_b_subnet.id]
@@ -130,7 +153,7 @@ resource "aws_iam_role_policy_attachment" "fortigate-attach" {
 
 resource "aws_network_interface" "fgta-public-a-eni" {
   subnet_id         = aws_subnet.public_a_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_public_a_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -140,7 +163,7 @@ resource "aws_network_interface" "fgta-public-a-eni" {
 
 resource "aws_network_interface" "fgtb-public-b-eni" {
   subnet_id         = aws_subnet.public_b_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_public_b_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -150,7 +173,7 @@ resource "aws_network_interface" "fgtb-public-b-eni" {
 
 resource "aws_network_interface" "fgta-private-a-eni" {
   subnet_id         = aws_subnet.private_a_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_private_a_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -160,7 +183,7 @@ resource "aws_network_interface" "fgta-private-a-eni" {
 
 resource "aws_network_interface" "fgtb-private-b-eni" {
   subnet_id         = aws_subnet.private_b_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_private_b_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -170,7 +193,7 @@ resource "aws_network_interface" "fgtb-private-b-eni" {
 
 resource "aws_network_interface" "fgta-hasync-a-eni" {
   subnet_id         = aws_subnet.hasync_a_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_hasync_a_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -180,7 +203,7 @@ resource "aws_network_interface" "fgta-hasync-a-eni" {
 
 resource "aws_network_interface" "fgtb-hasync-b-eni" {
   subnet_id         = aws_subnet.hasync_b_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_hasync_b_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -190,7 +213,7 @@ resource "aws_network_interface" "fgtb-hasync-b-eni" {
 
 resource "aws_network_interface" "fgta-mgmt-a-eni" {
   subnet_id         = aws_subnet.mgmt_a_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-mgmt-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_mgmt_a_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
@@ -200,7 +223,7 @@ resource "aws_network_interface" "fgta-mgmt-a-eni" {
 
 resource "aws_network_interface" "fgtb-mgmt-b-eni" {
   subnet_id         = aws_subnet.mgmt_b_subnet.id
-  security_groups   = [aws_security_group.NSG-vpc-fortinet-ssh-icmp-https.id]
+  security_groups   = [aws_security_group.NSG-vpc-fortinet-mgmt-allow-all.id]
   private_ips       = [cidrhost(var.fortinet_vpc_mgmt_b_subnet_cidr, 10)]
   source_dest_check = false
   tags = {
