@@ -1,6 +1,6 @@
 # Deployment Guide
 
-- Log in to AWS Console
+- Log in to AWS Console - Use credentials provided by the instructor
 - SSH to Jumpbox 
 - Clone the repository with:
  ``` sh
@@ -41,7 +41,7 @@ terraform apply
         - Endpoint
         - Transit Gateway (Attachment and Route Tables)
 
-- Log in to the FortiGate active management interface in a web browser and confirm the cluster is in Sync (this may take a ew minutes) once the cluster is in sync begin [Exercise 1](exercise-1.md)
+- Log in to the FortiGate active management interface in a web browser and confirm the cluster is in Sync (this may take a few minutes) once the cluster is in sync begin [Exercise 1](exercise-1.md)
 
 
 
