@@ -39,7 +39,8 @@ This environment is used by [Fortinet FGCP Active/Passive HA Lab](https://ukilab
 - Clone the repository.
 - Copy `terraform.tfvars.example`  to `terraform.tfvars`
 - If not using Jumpbox
-  - Change ACCESS_KEY and SECRET_KEY values in terraform.tfvars 
+  - Change ACCESS_KEY and SECRET_KEY values in terraform.tfvars or use environment variables or SSO profiles
+- Modify the "cidr_for_mgmt_access" variable in the variables.tf to restrict acesss to FortiGate managmenet interfaces. Default is "0.0.0.0/0"
 * Initialize the providers and modules:
   ```sh
   $ terraform init
