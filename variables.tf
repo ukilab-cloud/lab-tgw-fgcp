@@ -259,5 +259,5 @@ variable "cidr_for_access" {
 
 variable "cidr_for_mgmt_access" {
   description = "Provide a network CIDR for accessing the FortiGate instances,don't forget the /32"
-  default     = "194.168.211.150/32"
+  default     = "0.0.0.0/0"
 }

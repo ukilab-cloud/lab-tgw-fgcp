@@ -9,7 +9,7 @@ hide:
 !!! Success "Success Requirement"
     1. From Workload A - ping/curl/wget public services.
     2. `ping 8.8.8.8` or `ping 1.1.1.1`
-    3. `curl ipinfo.io` what IP do you see? 
+    3. `curl ipinfo.io` what IP do you see? You can also use `ssh sshmyip.com` 
     4. `ss -nat` on Workload A and confirm the source is the original source IP.
 
 ![Egress](./images/egress.png "Egress")

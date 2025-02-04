@@ -15,7 +15,7 @@ hide:
 ![Ingress with SNAT](./images/ingress.png "Ingress with SNAT")
 
 !!! Warning
-    Either use port translation or change the FortiGate SSH listening listening address on Port1
+    Either use port translation or change the FortiGate SSH listening listening address on Port1. Port translaton is preferred.
 
 !!! Danger
     Multiple failed login attempts to the FortiGate SSH CLI will result in a 5+ minute lockout. Any failed login should be carefully considered before attempting again.
