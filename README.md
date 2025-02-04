@@ -59,8 +59,15 @@ Output will include the information necessary to log in to the FortiGates:
 ```sh
 Outputs:
 
-FIXME
-
+FGT_A_MGMT_Public_IP = "<mgmtEIP1>"
+FGT_B_MGMT_Public_IP = "<mgmtEIP2>"
+FGT_Cluster_Public_IP = "<clusterEIP>"
+FGT_Password = "<instanceID>"
+FGT_Username = "admin"
+SSH_to_FGT_A = "ssh -i ./sshkey-aplab-ssh-priv.pem admin@<mgmtEIP1>"
+SSH_to_FGT_B = "ssh -i ./sshkey-aplab-ssh-priv.pem admin@<mgmtEIP2>"
+TransitGwy_ID = "tgw-ID"
+fortigate_image_id = "ami-ID"
 ```
 There is no password login to the Ubuntu hosts - please use the SSH Key created by the template
 
