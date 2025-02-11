@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -533,18 +533,30 @@
 
 <h1 id="exercise-4-east-west">Exercise 4 - East-West</h1>
 <h3 id="egress-traffic-to-the-internet-from-the-spoke-vpcs">Egress traffic to the Internet from the Spoke VPCs</h3>
+<div class="admonition info">
+<p class="admonition-title">IP Address Quick Reference</p>
+<ul>
+<li>The IP Address of the Workload A is 10.99.98.10</li>
+<li>The IP Address of the Workload B is 10.99.97.10</li>
+</ul>
+</div>
 <div class="admonition success">
 <p class="admonition-title">Success Requirement</p>
 <ol>
-<li>From Workload A - ping AND ssh to Workload B</li>
+<li>From Workload A - Successfully ping Workload B</li>
+<li>From Workload A - Successfully SSH to Workload B </li>
 </ol>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>SSH in AWS Requires SSH keys unless you do additional bootstrap activities to override this. SSH-Agent has not been enabled on Workload A and Workload B. To accommodate SSH from Workload A to Workload B you will need to get the key from the Jumphost to Workload A. While on the Jumphost:
-<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>sshkey-aplab-ssh-priv.pem<span class="w"> </span>ubuntu@10.99.98.10:.
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-i<span class="w"> </span>sshkey-aplab-ssh-priv.pem<span class="w"> </span>sshkey-aplab-ssh-priv.pem<span class="w"> </span>ubuntu@&lt;FGT<span class="w"> </span>Cluster<span class="w"> </span>IP&gt;:.
+</code></pre></div>
+If using a custom port (as you should)
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>-P<span class="w"> </span>&lt;custom<span class="w"> </span>port&gt;<span class="w"> </span>-i<span class="w"> </span>sshkey-aplab-ssh-priv.pem<span class="w"> </span>sshkey-aplab-ssh-priv.pem<span class="w"> </span>ubuntu@&lt;FGT<span class="w"> </span>Cluster<span class="w"> </span>IP&gt;:.
 </code></pre></div>
 This will copy the SSH key to the home directory of Workload A and you can initiate the session from there.</p>
+<p><strong>Note the . after the : - This is eseential. Don't forget the .</strong></p>
 </div>
 <p><a class="glightbox" href="../images/eastwest.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="East-West" src="../images/eastwest.png" title="East-West" /></a></p>
 <div class="admonition tip">
@@ -554,6 +566,13 @@ This will copy the SSH key to the home directory of Workload A and you can initi
 <code>diag sniffer packet port2 ‘tcp and port 2’ 4 0 1</code> <br />
 <code>diag sniffer packet any ‘host 10.99.98.10’ 4 0 1</code> - one of the spokes</p>
 </div>
+<details class="failure">
+<summary>Help I'm Lost!</summary>
+<ol>
+<li>Create a Policy?</li>
+<li>Make sure you use the key you copied to Workload A when you connect to Workload B</li>
+</ol>
+</details>
 
 
 
@@ -608,7 +627,7 @@ This will copy the SSH key to the home directory of Workload A and you can initi
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "search.highlight"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

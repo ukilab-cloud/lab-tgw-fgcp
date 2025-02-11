@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -533,21 +533,25 @@
 
 <h1 id="exercise-1-ingress-with-snat">Exercise 1 - Ingress with SNAT</h1>
 <h3 id="ingress-traffic-flow-from-jumpbox-to-workloada-with-snat-enabled-on-the-policy">Ingress Traffic flow from Jumpbox to WorkloadA with SNAT enabled on the policy</h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The IP Address of the Ubuntu Host is 10.99.98.10</p>
+</div>
 <div class="admonition success">
 <p class="admonition-title">Success Requirement</p>
 <ol>
-<li>SSH to Workload A using <code>ssh -i sshkey-aplab-ssh-priv.pem ubuntu@</code> whatever the IP/Port you are using</li>
-<li><code>ss -nat</code> on Workload A and confirm the source is the FortiGate</li>
+<li>From your device (not the Jumphost) SSH to Workload A using <code>ssh -P &lt;port&gt; -i sshkey-aplab-ssh-priv.pem ubuntu@&lt;clusterIP&gt;</code> Use the port forward you configured</li>
+<li>Run <code>ss -nat</code> on Workload A and confirm the source IP is the FortiGate. Look for ESTAB sessions</li>
 </ol>
 </div>
 <p><a class="glightbox" href="../images/ingress.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Ingress with SNAT" src="../images/ingress.png" title="Ingress with SNAT" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Either use port translation or change the FortiGate SSH listening listening address on Port1. Port translaton is preferred.</p>
+<p>Either use port translation or change the FortiGate SSH listening listening address on Port1. <strong>Port translaton is preferred</strong>.</p>
 </div>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
-<p>Multiple failed login attempts to the FortiGate SSH CLI will result in a 5+ minute lockout. Any failed login should be carefully considered before attempting again.</p>
+<p>Multiple failed login attempts to the FortiGate SSH CLI will result in a 5+ minute lockout. Any failed login should be carefully considered before attempting again. Ask yourself - Am I connecting to the FortiGate or to the Ubuntu host?</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -556,6 +560,13 @@
 <code>diag sniffer packet any ‘tcp and port 2222’ 4 0 1</code> - if using a tcp port translation<br />
 <code>diag sniffer packet any ‘host &lt;ip&gt;’ 4 0 1</code> - if you want to focus on a specific IP</p>
 </div>
+<details class="failure">
+<summary>Help I'm Lost!</summary>
+<ol>
+<li>Create a VIP</li>
+<li>Create a Policy</li>
+</ol>
+</details>
 
 
 
@@ -610,7 +621,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "search.highlight"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
