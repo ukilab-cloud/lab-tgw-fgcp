@@ -19,3 +19,6 @@ hide:
     `diag sniffer packet any ‘icmp’ 4 0 1`   
     `diag sniffer packet any ‘tcp and port 443’ 4 0 1`   
     `diag sniffer packet any ‘host 1.1.1.1’ 4 0 1` - if you want to focus on a specific destination for a ping for example
+
+??? Failure "Help I'm Lost!"
+    1. Create a Policy? From where to where?

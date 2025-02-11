@@ -11,6 +11,9 @@
 cd lab-tgw-fgcp
 cp terraform.tfvars.example terraform.tfvars
 ```
+!!! Warning
+    Modify the variable *cidr_for_mgmt_access* in the variable.tf or the terraform.tfvars. This restricts access to the FortiGate management interfaces. The default value is *0.0.0.0/0*. The variable expects a comma seperated list of IP/CIDR.
+     
 - Initialise terraform
 ```sh
 terraform init
