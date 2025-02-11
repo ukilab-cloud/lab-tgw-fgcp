@@ -16,4 +16,5 @@ provider "aws" {
   #  region     = var.region
   # Uncomment if using AWS SSO:
   # token      = var.token
+  # profile = var.profile
 }

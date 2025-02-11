@@ -9,6 +9,7 @@
 
 # Uncomment if using AWS SSO:
 # variable "token"      {}
+# variable "profile" {}
 # References of your environment
 
 # Prefix for all resources created for this deployment in AWS
