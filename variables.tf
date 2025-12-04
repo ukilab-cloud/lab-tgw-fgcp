@@ -9,7 +9,7 @@
 
 # Uncomment if using AWS SSO:
 # variable "token"      {}
-# variable "profile" {}
+variable "profile" {}
 # References of your environment
 
 # Prefix for all resources created for this deployment in AWS
@@ -43,7 +43,7 @@ variable "ubumajor" {
 variable "ubudate" {
   description = "Ubuntu Version - Date"
   type        = string
-  default     = "20240927"
+  default     = "20251022"
 }
 ### Key Pair Name 
 
@@ -96,7 +96,7 @@ variable "flex_token2" {
 
 //Fortigate AWS AMI Variables
 variable "fos_version" {
-  default = "7.6.2"
+  default = "7.6.4"
   type    = string
 }
 
@@ -117,7 +117,7 @@ variable "fos_license_type" {
 // For detail, refer to https://aws.amazon.com/ec2/instance-types/
 variable "instance_type" {
   description = "Provide the instance type for the FortiGate instances"
-  default     = "c6in.xlarge"
+  default     = "c6i.xlarge"
 }
 
 variable "scenario" {

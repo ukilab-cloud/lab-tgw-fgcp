@@ -27,7 +27,7 @@ resource "aws_security_group" "NSG-vpc-fortinet-allow-all" {
   tags = {
     Name     = "${var.tag_name_prefix}-vpc-fortinet-allow-all"
     scenario = var.scenario
-  }
+    }
 }
 
 resource "aws_security_group" "NSG-vpc-fortinet-mgmt-allow-all" {
@@ -334,25 +334,35 @@ resource "aws_instance" "fgta" {
   key_name             = var.keypair
   iam_instance_profile = aws_iam_instance_profile.fortigate_profile.name
   user_data            = local.userdata_fgta
-  network_interface {
-    device_index         = 0
+  primary_network_interface {
     network_interface_id = aws_network_interface.fgta-public-a-eni.id
-  }
-  network_interface {
-    device_index         = 1
-    network_interface_id = aws_network_interface.fgta-private-a-eni.id
-  }
-  network_interface {
-    device_index         = 2
-    network_interface_id = aws_network_interface.fgta-hasync-a-eni.id
-  }
-  network_interface {
-    device_index         = 3
-    network_interface_id = aws_network_interface.fgta-mgmt-a-eni.id
   }
   tags = {
     Name = "${var.tag_name_prefix}-fgta"
   }
+  lifecycle {
+    ignore_changes = [source_dest_check]
+  }
+}
+
+## Network Interface Attachments fgta
+
+resource "aws_network_interface_attachment" "fgta-private-a-eni-att" {
+  instance_id          = aws_instance.fgta.id
+  network_interface_id = aws_network_interface.fgta-private-a-eni.id
+  device_index         = 1
+}
+
+resource "aws_network_interface_attachment" "fgta-hasync-a-eni-att" {
+  instance_id          = aws_instance.fgta.id
+  network_interface_id = aws_network_interface.fgta-hasync-a-eni.id
+  device_index         = 2
+}
+
+resource "aws_network_interface_attachment" "fgta-mgmt-a-eni-att" {
+  instance_id          = aws_instance.fgta.id
+  network_interface_id = aws_network_interface.fgta-mgmt-a-eni.id
+  device_index         = 3
 }
 
 ### Create the fgtb instance
@@ -364,23 +374,33 @@ resource "aws_instance" "fgtb" {
   key_name             = var.keypair
   iam_instance_profile = aws_iam_instance_profile.fortigate_profile.name
   user_data            = local.userdata_fgtb
-  network_interface {
-    device_index         = 0
+  primary_network_interface {
     network_interface_id = aws_network_interface.fgtb-public-b-eni.id
-  }
-  network_interface {
-    device_index         = 1
-    network_interface_id = aws_network_interface.fgtb-private-b-eni.id
-  }
-  network_interface {
-    device_index         = 2
-    network_interface_id = aws_network_interface.fgtb-hasync-b-eni.id
-  }
-  network_interface {
-    device_index         = 3
-    network_interface_id = aws_network_interface.fgtb-mgmt-b-eni.id
   }
   tags = {
     Name = "${var.tag_name_prefix}-fgtb"
   }
+  lifecycle {
+    ignore_changes = [source_dest_check]
+  }
+}
+
+## Network Interface Attachments fgtb
+
+resource "aws_network_interface_attachment" "fgtb-private-b-eni-att" {
+  instance_id          = aws_instance.fgtb.id
+  network_interface_id = aws_network_interface.fgtb-private-b-eni.id
+  device_index         = 1
+}
+
+resource "aws_network_interface_attachment" "fgtb-hasync-b-eni-att" {
+  instance_id          = aws_instance.fgtb.id
+  network_interface_id = aws_network_interface.fgtb-hasync-b-eni.id
+  device_index         = 2
+}
+
+resource "aws_network_interface_attachment" "fgtb-mgmt-b-eni-att" {
+  instance_id          = aws_instance.fgtb.id
+  network_interface_id = aws_network_interface.fgtb-mgmt-b-eni.id
+  device_index         = 3
 }
